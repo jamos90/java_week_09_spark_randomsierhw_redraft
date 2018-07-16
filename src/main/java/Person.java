@@ -1,35 +1,49 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Person {
-    private String name;
-    private int age;
-    private String occupation;
+    private ArrayList<String> names;
+    ;
 
-    public Person(String name, int age, String occupation){
-        this.name = name;
-        this.age = age;
-        this.occupation = occupation;
+    public Person(ArrayList<String> names){
+        this.names = new ArrayList<String >();
+        names.add("James");
+        names.add("Jess");
+        names.add("Alan");
+        names.add("Stephen");
+        names.add("Joe");
+        names.add("Kate");
+        names.add("Alice");
+        names.add("April");
     }
 
-    public String getName() {
-        return name;
+    public ArrayList<String> getNames() {
+        return names;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNames(ArrayList<String> names) {
+        this.names = names;
     }
 
-    public int getAge() {
-        return age;
+    public String getAllNames(){
+        String allNames = null;
+        for (String name : names){
+            return allNames += name + " ";
+        }
+        return allNames;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public String randomName(){
+        Collections.shuffle(names);
+        return names.get(0);
     }
 
-    public String getOccupation() {
-        return occupation;
+    public ArrayList<String> twoRandomNames() {
+        ArrayList<String> newNames = new ArrayList<>();
+            Collections.shuffle(names);
+               newNames.add(names.get(0));
+               newNames.add(names.get(1));
+        return newNames;
     }
 
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
-    }
 }
