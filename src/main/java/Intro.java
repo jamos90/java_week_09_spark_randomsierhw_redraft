@@ -26,6 +26,14 @@ public class Intro {
             return person.randomName();
         });
 
+        get("/two", (req, res) ->{
+            String randomNames = " ";
+         for( String people : person.twoRandomNames()){
+             randomNames += people + " ";
+         }
+         return randomNames;
+        });
+
         get("/helloWorld", (req, res) ->{
             return "Hello World!";
         });
