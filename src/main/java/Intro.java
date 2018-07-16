@@ -13,6 +13,13 @@ public class Intro {
     public static void main(String[] args) {
         VelocityTemplateEngine velocityTemplateEngine = new VelocityTemplateEngine();
         Person person = new Person();
+        person.addNames("James");
+        person.addNames("Jess");
+        person.addNames("Adam");
+        person.addNames("Kate");
+        person.addNames("Morag");
+        person.addNames("David");
+        person.addNames("George");
 
 
         get("/one",(req,res) ->{
