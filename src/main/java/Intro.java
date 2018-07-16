@@ -12,30 +12,18 @@ public class Intro {
 
     public static void main(String[] args) {
         VelocityTemplateEngine velocityTemplateEngine = new VelocityTemplateEngine();
-
-        ArrayList<Person> people = new ArrayList<>();
-        Person person1 = new Person("James", 28,"Coder");
-        Person person2 = new Person("Jess", 28,"Graphic desinger");
-        Person person3 = new Person("Dan", 29,"Account manager");
-        Person person4 = new Person("Sofia", 30,"Engineer");
+        Person person = new Person();
 
 
+        get("/one",(req,res) ->{
+            return person.randomName();
+        });
 
         get("/helloWorld", (req, res) ->{
             return "Hello World!";
         });
 
-        get("/one", (req,res) ->{
-            HashMap<String, Object> model = new HashMap<>();
-            model.put("people", people);
-            model.put("template", "people.vtl");
-            return new ModelAndView(model,"layout.vtl");
-        }, velocityTemplateEngine);
 
-        get("/one",(req,res) ->{
-            Collections.shuffle(people);
-            return people.get(0);
-        });
 
         get("/name", (req, res) ->{
             ArrayList<String> names = new ArrayList<>();
@@ -61,9 +49,5 @@ public class Intro {
 
         });
 
-        get("/one",(req,res) ->{
-            Collections.shuffle(people);
-            return people.get(0).getName();
-        });
     }
 }

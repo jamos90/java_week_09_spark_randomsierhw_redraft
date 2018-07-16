@@ -5,16 +5,8 @@ public class Person {
     private ArrayList<String> names;
     ;
 
-    public Person(ArrayList<String> names){
+    public Person(){
         this.names = new ArrayList<String >();
-        names.add("James");
-        names.add("Jess");
-        names.add("Alan");
-        names.add("Stephen");
-        names.add("Joe");
-        names.add("Kate");
-        names.add("Alice");
-        names.add("April");
     }
 
     public ArrayList<String> getNames() {
@@ -23,6 +15,10 @@ public class Person {
 
     public void setNames(ArrayList<String> names) {
         this.names = names;
+    }
+
+    public void addNames(String name){
+        this.names.add(name);
     }
 
     public String getAllNames(){
@@ -46,4 +42,7 @@ public class Person {
         return newNames;
     }
 
+    public int nameCount() {
+       return this.names.size();
+    }
 }
