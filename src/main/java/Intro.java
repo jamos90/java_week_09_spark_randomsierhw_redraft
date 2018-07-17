@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -23,46 +24,32 @@ public class Intro {
 
 
         get("/one",(req,res) ->{
-            return person.randomName();
-        });
+            String randomName = person.randomName();
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("randomName", randomName);
+            return new ModelAndView(model, "one.vtl");
+        }, velocityTemplateEngine);
+
+
 
         get("/two", (req, res) ->{
             String randomNames = " ";
          for( String people : person.twoRandomNames()){
              randomNames += people + " ";
          }
-         return randomNames;
-        });
-
-        get("/helloWorld", (req, res) ->{
-            return "Hello World!";
-        });
+         HashMap<String, Object> model = new HashMap<>();
+         model.put("randomNames", randomNames);
+         return new ModelAndView(model, "two.vtl");
+        },velocityTemplateEngine);
 
 
 
-        get("/name", (req, res) ->{
-            ArrayList<String> names = new ArrayList<>();
-            names.add("James");
-            names.add("Stephen");
-            names.add("Alan");
-            names.add("Adam");
-            Collections.shuffle(names);
-            return names.get(0);
-
-        });
 
 
-        get("/two", (req, res) ->{
-            ArrayList<String> names = new ArrayList<>();
-            names.add("James");
-            names.add("Stephen");
-            names.add("Alan");
-            names.add("Adam");
-            Collections.shuffle(names);
-            return names.get(0);
 
 
-        });
+
+
 
     }
 }
